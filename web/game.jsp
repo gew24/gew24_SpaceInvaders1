@@ -14,6 +14,7 @@
         
     </head>
     <body>
-        <h1>Welcome to the Game!</h1>
+        <h1>Welcome to the Space Invaders!</h1>
+        
     </body>
 </html>
