@@ -14,29 +14,30 @@
         <title>Space Invaders - Login</title>
     </head>
     <%
+        //vars to hold text
         String txtEmail = "";
         String txtPassword = "";
-        User user;
-        if(request.getParameter("btnSubmit") !=null){
-            if(request.getParameter("txtEmail") != ""){
-                txtEmail = request.getParameter("txtEmail");
+        User user;// new user object
+        if(request.getParameter("btnSubmit") !=null){// check submit button click
+            if(request.getParameter("txtEmail") != ""){// make sure an email address is entered
+                txtEmail = request.getParameter("txtEmail");//get user text 
             }
-            if(request.getParameter("txtPassword") != null){
-                txtPassword = request.getParameter("txtPassword");
+            if(request.getParameter("txtPassword") != null){//check password was entered
+                txtPassword = request.getParameter("txtPassword");//get user text 
             } 
-            if(!txtEmail.equals("") && !txtPassword.equals("")){   
+            if(!txtEmail.equals("") && !txtPassword.equals("")){ // create user object if email and password were entered  
                 user = new User(txtEmail, txtPassword);
                 
-                if(user.isLoggedIn()){
+                if(user.isLoggedIn()){ // validate login information 
                 //out.println("email = " + txtEmail + " password  = " + txtPassword);
                     //out.println("<script>alert('login successful')</script>");
                     response.sendRedirect("game.jsp");
                 }
-                else{ 
+                else{ // if login info is not valid
                     out.println("<script>alert('wrong email or password')</script>");
                 }
             }
-            else{
+            else{ // if user does not enter email or password
                 out.println("<script>alert('you must enter username and password')</script>");
             }
         }

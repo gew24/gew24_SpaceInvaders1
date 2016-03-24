@@ -20,25 +20,25 @@
         
         User user;
                 
-        if(request.getParameter("btnRegister") !=null){
-            if(request.getParameter("txtEmail") != null){
-                email = request.getParameter("txtEmail");
+        if(request.getParameter("btnRegister") !=null){ //check for register button click
+            if(request.getParameter("txtEmail") != null){ //ensure users entered email
+                email = request.getParameter("txtEmail");//get user text
             }
-            if(request.getParameter("txtPassword") != null){
-                password = request.getParameter("txtPassword");
+            if(request.getParameter("txtPassword") != null){ // make sure user entered password
+                password = request.getParameter("txtPassword");// get user text
             } 
-            if(request.getParameter("txtFirstName") != null){
-                firstName = request.getParameter("txtFirstName");
+            if(request.getParameter("txtFirstName") != null){ // make sure user entered first name
+                firstName = request.getParameter("txtFirstName");//get user text
             }
-            if(request.getParameter("txtLastName") != null){
-                lastName = request.getParameter("txtLastName");
+            if(request.getParameter("txtLastName") != null){//make sure user entered last name
+                lastName = request.getParameter("txtLastName");//get user text
             }
-            if(!firstName.equals("") && !lastName.equals("") && !email.equals("") && !password.equals("")){   
-                user = new User(firstName, lastName,email, password);
-                out.println("<script>alert ('registration successful') </script>");
-                response.sendRedirect("game.jsp");
+            if(!firstName.equals("") && !lastName.equals("") && !email.equals("") && !password.equals("")){// validate all information was obtained   
+                user = new User(firstName, lastName,email, password);//create new user object to create new player profile
+                out.println("<script>alert ('registration successful') </script>");// inform the user that the registation was successful
+                response.sendRedirect("game.jsp");//open the game for the newly registered user
             }
-            else{
+            else{// inform the user that the registration failed
             out.println("<script>alert('registration failed')</script>");
             }   
         }
