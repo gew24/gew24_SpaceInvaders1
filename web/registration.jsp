@@ -17,7 +17,7 @@
         String firstName = "";
         String email = "";
         String password = "";
-        
+        String rePassword = "";
         User user;
                 
         if(request.getParameter("btnRegister") !=null){ //check for register button click
@@ -33,10 +33,13 @@
             if(request.getParameter("txtLastName") != null){//make sure user entered last name
                 lastName = request.getParameter("txtLastName");//get user text
             }
-            if(!firstName.equals("") && !lastName.equals("") && !email.equals("") && !password.equals("")){// validate all information was obtained   
-                user = new User(firstName, lastName,email, password);//create new user object to create new player profile
-                out.println("<script>alert ('registration successful') </script>");// inform the user that the registation was successful
-                response.sendRedirect("game.jsp");//open the game for the newly registered user
+            if(request.getParameter("txtRePassword") != null){//make sure user entered password a second time
+                rePassword = request.getParameter("txtRePassword");// get re-password
+            }
+            if(!firstName.equals("") && !lastName.equals("") && !email.equals("") && !password.equals("") && !rePassword.equals("")){
+                    user = new User(firstName, lastName,email, password);//create new user object to create new player profile
+                    out.println("<script>alert ('registration successful') </script>");// inform the user that the registation was successful
+                    response.sendRedirect("game.jsp");//open the game for the newly registered user
             }
             else{// inform the user that the registration failed
             out.println("<script>alert('registration failed')</script>");
@@ -48,25 +51,30 @@
         Please enter the relevant information to register for the Space Invaders game.
             <form id="frmRegister" action = "registration.jsp" method="post">
                 <p> 
-                    <label for="txtFirstName">First Name:</label>&nbsp;<input type="text" id="txtFirstName" name="txtFirstName" value="">
+                    <label for="txtFirstName">First Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="txtFirstName" name="txtFirstName" value="">
                         <br />
                 </p>
 
                 <p>
-                    <label for="txtLastName">Last Name:</label>&nbsp;<input type="text" id="txtLastName" name="txtLastName" value="">
+                    <label for="txtLastName">Last Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="txtLastName" name="txtLastName" value="">
                         <br />
                 </p>
                 
                 <p>
-                    <label for="txtEmail">Email:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" id="txtEmail" name="txtEmail" value="">
+                    <label for="txtEmail">Email:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" id="txtEmail" name="txtEmail" value="">
                         <br />
                 </p>
                 
                 <p>
-                    <label for="txtPassword">Password:</label>&nbsp;&nbsp;&nbsp; <input type="password" id="txtPassword" name="txtPassword" value="">
+                    <label for="txtPassword">Password:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" id="txtPassword" name="txtPassword" value="">
                         <br />
                 </p>
                
+                <p>
+                    <label for="txtRePassword">Re-Password:</label>&nbsp; <input type="password" id="txtRePassword" name="txtRePassword" value="">
+                        <br />
+                </p>
+                
                 <p> 
                     <input type="submit" id="btnRegister" name="btnRegister" value="Register">
                 </p>

@@ -1,4 +1,17 @@
 
-#frmLogin {
 
-}
+
+	
+        /* Styling needed for a fullscreen canvas and no scrollbars. */
+        body, html { 
+    background-image: url("assets/imagees/stars.jpg");
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+        }
+
+       
+
+

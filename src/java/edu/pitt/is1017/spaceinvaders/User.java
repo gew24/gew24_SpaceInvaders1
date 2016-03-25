@@ -16,10 +16,11 @@ public class User {
 	private boolean loggedIn;
 	
 	//default constructor
-	public User(int user, String mail, String pw){
+	public User(int user, String mail, String pw, String verifyPassword){
 		userID = user;
 		email = mail;
 		password = pw;
+                
 	}
 	
 	public int getUserID() {
